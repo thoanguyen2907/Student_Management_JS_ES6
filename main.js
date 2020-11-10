@@ -137,9 +137,7 @@ window.GetStorage = GetStorage;
 
 const SapXepTheoMa = () => {
   let  listSort = danhSachSinhVien.sortTheMa(); 
-  console.log(listSort);
-  console.log(listSort.renderHTML()) 
-  // DomID("tbodySinhVien").innerHTML =  listSort.renderHTML();  
+   DomID("tbodySinhVien").innerHTML =  listSort.renderHTML();  
 
 }
 window.SapXepTheoMa = SapXepTheoMa; 

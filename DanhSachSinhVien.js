@@ -83,14 +83,29 @@ export class DanhSachSinhVien{
     //   }
     sortTheMa(){
         let listSort =  new DanhSachSinhVien(); 
-        listSort =  this.DSSV.sort((a,b)=>{
-            if(a.masv > b.masv) {
-                return 1; 
-            } else if (b.masv > a.masv){
-                return -1; 
-            } else return 0; 
-        }); 
-        return listSort; 
+        let boolean; 
+          if (!boolean) {
+            listSort.DSSV =  this.DSSV.sort((a,b)=>{
+                if(a.masv > b.masv) {
+                    return 1; 
+                } else if (b.masv > a.masv){
+                    return -1; 
+                } else return 0; 
+            }); 
+            boolean = true;  
+          }
+                         
+         else if (boolean) {
+            console.log(boolean);
+            listSort.DSSV =  this.DSSV.sort((a,b)=>{
+                if(a.masv > b.masv) {
+                    return - 1; 
+                } else if (b.masv > a.masv){
+                    return 1; 
+                } else return 0; 
+            }); 
+            boolean = false; 
+        }
+        return listSort;
     }
-
 }
