@@ -45,8 +45,7 @@ export class DanhSachSinhVien{
             }
         }
         return listKQTimKiem; 
-    }
-    
+    } 
     TimSVTheoMa(masv){
         for (let i = 0; i < this.DSSV.length; i++){
             let svCurrent = this.DSSV[i]; 
@@ -70,4 +69,28 @@ export class DanhSachSinhVien{
             }
         }
     }
+    //  compare( a, b ) {
+    //     if ( a.masv < b.masv ){
+    //       return -1;
+    //     }
+    //     if ( a.masv > b.masv ){
+    //       return 1;
+    //     }
+    //     return 0;
+    //   }
+    //   sortTheMa() {
+    //  this.DSSV.sort(compare); 
+    //   }
+    sortTheMa(){
+        let listSort =  new DanhSachSinhVien(); 
+        listSort =  this.DSSV.sort((a,b)=>{
+            if(a.masv > b.masv) {
+                return 1; 
+            } else if (b.masv > a.masv){
+                return -1; 
+            } else return 0; 
+        }); 
+        return listSort; 
+    }
+
 }

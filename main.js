@@ -27,7 +27,7 @@ SinhVien.prototype.xepLoai = function () {
     }
 }
 const dummyData = () => {
-    let sv1 = new SinhVien(1, "thoa", "thoanguyen@gmail.com", 12, 12, 5, 5, 5);
+    let sv1 = new SinhVien(4, "thoa", "thoanguyen@gmail.com", 12, 12, 5, 5, 5);
     sv1.tinhDTB();
     sv1.xepLoai();
     danhSachSinhVien.addSinhVien(sv1);
@@ -135,5 +135,11 @@ const GetStorage = () => {
 window.SetStorage = SetStorage;
 window.GetStorage = GetStorage;
 
+const SapXepTheoMa = () => {
+  let  listSort = danhSachSinhVien.sortTheMa(); 
+  console.log(listSort);
+  console.log(listSort.renderHTML()) 
+  // DomID("tbodySinhVien").innerHTML =  listSort.renderHTML();  
 
-
+}
+window.SapXepTheoMa = SapXepTheoMa; 
