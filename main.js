@@ -36,6 +36,16 @@ const dummyData = () => {
     sv2.tinhDTB();
     sv2.xepLoai();
     danhSachSinhVien.addSinhVien(sv2);
+
+    let sv3 = new SinhVien(3, "huy", "huynguyen@gmail.com", 13, 11, 8, 5, 10);
+    sv3.tinhDTB();
+    sv3.xepLoai();
+    danhSachSinhVien.addSinhVien(sv3);
+
+    let sv4 = new SinhVien(4, "phuc", "phucnguyen@gmail.com", 10, 10, 8, 10, 10);
+    sv4.tinhDTB();
+    sv4.xepLoai();
+    danhSachSinhVien.addSinhVien(sv4);
 }
 const showData = (tbody) => {
     DomID(tbody).innerHTML = danhSachSinhVien.renderHTML();
@@ -135,9 +145,25 @@ const GetStorage = () => {
 window.SetStorage = SetStorage;
 window.GetStorage = GetStorage;
 
-const SapXepTheoMa = () => {
-  let  listSort = danhSachSinhVien.sortTheMa(); 
-   DomID("tbodySinhVien").innerHTML =  listSort.renderHTML();  
+
+const SapXep = (e) => { 
+    let target = e.currentTarget; 
+            let order = target.getAttribute("data-order"); 
+            let column = target.getAttribute("data-column"); 
+            order = order === "desc"? "asc": "desc"; 
+            target.setAttribute("data-order", order); 
+            let listSort = danhSachSinhVien.sortTheMa(order, column); 
+            DomID("tbodySinhVien").innerHTML =  listSort.renderHTML(); 
+    
+}
+window.SapXep = SapXep; 
+const sort = (e) => {
+    e.preventDefault(); 
+    let rank = e.currentTarget.getAttribute("data-rank");
+    const arraySapXepTheoRank =  danhSachSinhVien.sortXepLoai(rank); 
+
+    DomID("tbodySinhVien").innerHTML =  arraySapXepTheoRank.renderHTML(); 
 
 }
-window.SapXepTheoMa = SapXepTheoMa; 
+window.sort = sort; 
+

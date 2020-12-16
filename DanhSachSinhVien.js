@@ -69,43 +69,42 @@ export class DanhSachSinhVien{
             }
         }
     }
-    //  compare( a, b ) {
-    //     if ( a.masv < b.masv ){
-    //       return -1;
-    //     }
-    //     if ( a.masv > b.masv ){
-    //       return 1;
-    //     }
-    //     return 0;
-    //   }
-    //   sortTheMa() {
-    //  this.DSSV.sort(compare); 
-    //   }
-    sortTheMa(){
+    
+    sortTheMa(order, column){   
         let listSort =  new DanhSachSinhVien(); 
-        let boolean; 
-          if (!boolean) {
+          if (order === "desc") {     
             listSort.DSSV =  this.DSSV.sort((a,b)=>{
-                if(a.masv > b.masv) {
+                if(a[column] > b[column]) {
                     return 1; 
-                } else if (b.masv > a.masv){
+                } else if (b[column] > a[column]){
+                    return -1; 
+                } else return 0; 
+            });            
+          }             
+         else if (order === "asc") {   
+            listSort.DSSV =  this.DSSV.sort((a,b)=>{
+                if(a[column] > b[column]) {
+                    return  1; 
+                } else if (b[column] > a[column]){
                     return -1; 
                 } else return 0; 
             }); 
-            boolean = true;  
-          }
-                         
-         else if (boolean) {
-            console.log(boolean);
-            listSort.DSSV =  this.DSSV.sort((a,b)=>{
-                if(a.masv > b.masv) {
-                    return - 1; 
-                } else if (b.masv > a.masv){
-                    return 1; 
-                } else return 0; 
-            }); 
-            boolean = false; 
+            listSort.DSSV = this.DSSV.reverse(); 
         }
         return listSort;
+    }
+    sortXepLoai(rank){
+        let arraySapXepTheoRank = new DanhSachSinhVien();
+        if(rank === "excellent"){
+            arraySapXepTheoRank.DSSV = this.DSSV.filter(sv => sv.loai === "Giỏi")
+        } else if (rank === "good"){
+            arraySapXepTheoRank.DSSV = this.DSSV.filter(sv => sv.loai === "Khá")
+        } else if 
+        (rank === "average"){
+            arraySapXepTheoRank.DSSV = this.DSSV.filter(sv => sv.loai === "Trung Bình")
+        } else {
+            arraySapXepTheoRank.DSSV = [...this.DSSV]
+        }
+        return arraySapXepTheoRank
     }
 }
